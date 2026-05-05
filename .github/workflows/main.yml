@@ -25,7 +25,7 @@ jobs:
      # - name: Setup tmate session
      #   uses: mxschmitt/action-tmate@v3
       - name: Run script
-        run: python app.py & sleep 10
+        run: python app.py & sleep 100
         
       - name: Save API Response to file
         run: curl http://127.0.0:50000 > response1.json
