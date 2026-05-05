@@ -13,6 +13,7 @@ jobs:
           MYSQL_DATABASE: crud_db
         ports:
           - 3306:3306
+
         options: >-
           --health-cmd="mysqladmin ping"
           --health-interval=10s
@@ -29,8 +30,11 @@ jobs:
           pip install flask flask-mysqldb pytest
      # - name: Setup tmate session
      #   uses: mxschmitt/action-tmate@v3
+      - name: Wait for MySQL
+        run: sleep 30
+        
       - name: Run script
-        run: python app.py & sleep 10
+        run: python app.py & sleep 40
         
       - name: Run tests
         run: pytest
