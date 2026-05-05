@@ -22,8 +22,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install flask flask-mysqldb pytest
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Run script
         run: python app.py & sleep 100
+
           
      # - name: Run tests
      #   run: pytest
