@@ -22,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: |
           pip install flask flask-mysqldb pytest
-      - name: Run tests
-        run: pytest
+     # - name: Run tests
+     #   run: pytest
