@@ -27,5 +27,32 @@ def get_users():
     rows = cur.fetchall()
     return jsonify(rows)
 
+
+@app.route('/setdb')
+def set_db():
+    try:
+        cur = mysql.connection.cursor()
+        
+        # 1. Create Database (if it doesn't exist)
+        cur.execute("CREATE DATABASE IF NOT EXISTS crud_db")
+        
+        # 2. Switch to the database
+        cur.execute("USE crud_db")
+        
+        # 3. Create Table
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS tbl_user (
+                user_id INT AUTO_INCREMENT PRIMARY KEY,
+                user_name VARCHAR(45) NOT NULL,
+                user_email VARCHAR(45) NOT NULL
+            )
+        """)
+        
+        mysql.connection.commit()
+        cur.close()
+        return jsonify({"message": "Database and Table created successfully!"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
