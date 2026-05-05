@@ -1,21 +1,26 @@
-name: CI/CD Pipeline
+name: Python CRUD CI
 
 on: [push]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: crud_db
+        ports:
+          - 3306:3306
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
-      - name: Install Dependencies
-        run: pip install -r app/requirements.txt
-      - name: Run Tests
-        run: pytest # Assumes tests are written
-      - name: Run Tests
+          python-version: '3.9'
+      - name: Install dependencies
         run: |
-          export PYTHONPATH=$PYTHONPATH:.
-          pytest app/test_app.py
+          pip install flask flask-mysqldb pytest
+      - name: Run tests
+        run: pytest
