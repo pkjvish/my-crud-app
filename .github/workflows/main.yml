@@ -27,6 +27,8 @@ jobs:
       - name: Run script
         run: python app.py & sleep 100
         
+      - name: Run tests
+        run: pytest
       - name: Save API Response to file
         run: curl http://127.0.0:50000 > response1.json
 
@@ -35,7 +37,3 @@ jobs:
         with:
           name: api-output
           path: response1.json
-          
-          
-     # - name: Run tests
-     #   run: pytest
