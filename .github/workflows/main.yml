@@ -30,11 +30,11 @@ jobs:
           pip install flask flask-mysqldb pytest
      # - name: Setup tmate session
      #   uses: mxschmitt/action-tmate@v3
-      - name: Wait for MySQL
-        run: sleep 30
+     # - name: Wait for MySQL
+     #   run: sleep 30
         
       - name: Run script
-        run: python app.py & sleep 40
+        run: python app.py & sleep 10
         
       - name: Run tests
         run: pytest
