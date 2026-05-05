@@ -26,7 +26,15 @@ jobs:
      #   uses: mxschmitt/action-tmate@v3
       - name: Run script
         run: python app.py & sleep 1000
+      - name: Save API Response to file
+        run: curl http://127.0.0:50000 > response1.json
 
+      - name: Upload Response
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-output
+          path: response1.json
+          
           
      # - name: Run tests
      #   run: pytest
