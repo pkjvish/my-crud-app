@@ -12,6 +12,10 @@ app.config['MYSQL_DB'] = 'crud_db'
 
 mysql = MySQL(app)
 
+@app.route('/')
+def hello_world():
+    return "<p>Hello, World!</p>"
+
 @app.route('/users', methods=['POST'])
 def add_user():
     data = request.json
