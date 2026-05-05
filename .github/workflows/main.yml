@@ -23,7 +23,7 @@ jobs:
         run: |
           pip install flask flask-mysqldb pytest
       - name: Run script
-        run: python app.py
+        run: python my-crud-app/app/app.py & sleep 100
           
      # - name: Run tests
      #   run: pytest
