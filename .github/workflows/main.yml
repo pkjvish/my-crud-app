@@ -17,6 +17,6 @@ jobs:
         run: pytest # Assumes tests are written
       - name: Run Tests
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          pytest app/test_app.py
+          export PYTHONPATH=$PYTHONPATH:.
+          pytest
         
