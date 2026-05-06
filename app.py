@@ -20,13 +20,16 @@ def add_user():
     mysql.connection.commit()
     return jsonify({"message": "User added successfully!"}), 201
 
+@app.route('/')
+def hello_world():
+    return "<p>Hello, World!</p>"
+
 @app.route('/users', methods=['GET'])
 def get_users():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM tbl_user")
     rows = cur.fetchall()
     return jsonify(rows)
-
 
 @app.route('/setdb')
 def set_db():
