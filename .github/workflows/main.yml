@@ -1,6 +1,6 @@
 name: Python CRUD CI
 
-on: [push]
+on: []
 
 jobs:
   build:
